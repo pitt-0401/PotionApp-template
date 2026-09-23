@@ -15,7 +15,7 @@ Each potion-making attempt involves:
 1. **Choosing Ingredients (-> Strength)**: Ingredients have effects on the potion's strength; choosing the correct combination is crucial.
 2. **Stirring (-> Strength)**: The potion must be stirred a certain amount of times, which influences the strength of the potion
 3. **Heating (-> Quality)**: The potion must be heated to a certain level, which influences the quality of the potion
-4. **Potion Evaluation**: Your potion’s final result depends on its strength (from ingredients and stirring) and quality (from heating). If these are within the right ranges, you will brew a perfect potion; otherwise, you may end up with a weaker effect, a failed brew, or even an explosive mishap!
+4. **Potion Evaluation**: Your potion’s final result depends on its strength (from ingredients and stirring) and quality (from heating). If both are high enough, you will brew a perfect potion; otherwise, you may end up with a weaker effect, a failed brew, or even an explosive mishap!
 
 ----
 
@@ -33,8 +33,8 @@ Please make sure to follow the logical rules below:
   The user picks actions in any order, so **`Potion`** enforces the phases (not `PotionApp`!):
    - `stir()` prints an error message until exactly 3 ingredients have been added.
    - `heat()` prints an error message until the potion has been stirred.
-   - `evaluatePotion()` returns an error string until the potion has been heated, and if called a second time (`CauldronEvent` should trigger only once).
-   - If the potion is ruined/exploded/evaluated, stir/heat/evaluate print an error message and leave the potion unchanged.
+   - `evaluatePotion()` returns an error string (instead of a result) if the potion has not been heated yet or was already evaluated; in those cases the `CauldronEvent` is not triggered, so it fires only once.
+   - If the potion is ruined/exploded/evaluated, `stir()`/`heat()` print an error message and `evaluatePotion()` returns an error string; the potion stays unchanged.
 2. **Ingredients**: Each potion requires exactly **three ingredients**. The student can choose from a list of **six possible ingredients**, each with a different effect. Adding more than three ingredients causes the potion to be ruined.
 3. **Stirring and Heating**: After adding all ingredients, the student must first **stir** the potion and then adjust the **heat effect**. After each action, the potion's strength or quality is modified by a **randomized amount**: Stirring (→ `strength`) / heating (→ `quality`) is increased by a random effect (see template). 
 4. **Potion Evaluation**: The outcome of the potion is determined by the combination of ingredients (strength), stirring (strength), and heating effect (quality). 
@@ -43,6 +43,8 @@ The potion can result in one of several outcomes:
    - **Success**: The potion is perfectly brewed.
    - **Partial Success**: The potion works but is less effective.
    - **Failure**: The potion fails.
+
+   You decide the strength/quality thresholds for each outcome.
 
 ### Hints
 - Each ingredient has a unique effect on the potion’s outcome (e.g., increasing or decreasing its strength).

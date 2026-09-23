@@ -53,14 +53,14 @@ public class PotionApp {
         // TODO
     }
 
-    // TODO: Implement stirPotion() - prompt user for number and stir potion that
-    // many times
+    // TODO: Implement stirPotion() - prompt user for a number (1-3) and stir potion
+    // that many times
     static void stirPotion(Potion potion) {
         // TODO
     }
 
-    // TODO: Implement heatPotion() - prompt user for a heating level and heat the
-    // potion that many times
+    // TODO: Implement heatPotion() - prompt user for a heating level (1-3) and heat
+    // the potion that many times
     static void heatPotion(Potion potion) {
         // TODO
     }

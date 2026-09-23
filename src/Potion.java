@@ -9,10 +9,11 @@ public class Potion {
      *            adding a fourth ingredient ruins the potion
      * - stir() prints an error message until 3 ingredients are added
      * - heat() prints an error message until the potion has been stirred
-     * - evaluatePotion() returns an error string until the potion has been heated,
-     *            and if called a second time (CauldronEvent should trigger only once)
-     * - if ruined/exploded/evaluated, stir/heat/evaluate print an error message
-     *            and leave the potion unchanged
+     * - evaluatePotion() returns an error string if the potion has not been heated
+     *            yet or was already evaluated (CauldronEvent then does not trigger,
+     *            so it fires only once)
+     * - if ruined/exploded/evaluated, stir()/heat() print an error message and
+     *            evaluatePotion() returns an error string; the potion stays unchanged
      * 
      * HINT: fields you need are
      * strength, quality, ingredientsAdded
@@ -30,6 +31,7 @@ public class Potion {
 
     // TODO: Implement evaluatePotion(): returns the result as a String
     // (success / partial success / failure) and triggers the CauldronEvent once.
+    // You decide the strength/quality thresholds for each outcome.
     // If the potion has not been heated yet, or was already evaluated, return an
     // error string instead and do not trigger the CauldronEvent.
 
